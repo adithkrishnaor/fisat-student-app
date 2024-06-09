@@ -11,7 +11,11 @@ const ViewAll = () => {
         console.log(response.data)
         setData(response.data)
       }
-    ).catch().finally()
+    ).catch(
+      (error) => {
+        alert(error.message)
+      }
+    ).finally()
   }
   useEffect(()=> {fetchData()},[])
 
@@ -21,7 +25,7 @@ const ViewAll = () => {
       <div className="container">
         <div className="row">
           <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-            <center>
+            <br /><center>
               <h3>View All</h3>
             </center><br />
             <div className="row g-3">
