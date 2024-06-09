@@ -1,33 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import axios from "axios";
 
 const ViewAll = () => {
-  const [data, setData] = useState([
-    {
-      _id: "66651683741a512717d92b87",
-      firstname: "Manu",
-      lastname: "R",
-      college: "FISAT",
-      dob: "02/04/1999",
-      course: "B-Tech Comp Science",
-      mobile: "+91 95266 7443",
-      email: "aa@gmail.com",
-      address: "Kochi",
-      __v: 0,
-    },
-    {
-      _id: "666516bc741a512717d92b88",
-      firstname: "Rahul",
-      lastname: "D",
-      college: "FISAT",
-      dob: "02/01/1992",
-      course: "MCA",
-      mobile: "+91 95266 74440",
-      email: "aa@gmail.com",
-      address: "Test Address",
-      __v: 0,
-    },
-  ]);
+  const [data, setData] = useState([]);
+  const fetchData = () => {
+    axios.get("https://anishpdm.github.io/dummy-api-new/student.json")
+    .then(
+      (response) => {
+        console.log(response.data)
+        setData(response.data)
+      }
+    ).catch().finally()
+  }
+  useEffect(()=> {fetchData()},[])
+
   return (
     <div>
       <Navbar />
@@ -45,7 +32,7 @@ const ViewAll = () => {
                       <div class="card text-bg-secondary mb-3">
                         <h4 class="card-header text-center">{value.firstname}</h4>
                         <div class="card-body">
-                          <h6 class="card-text">Full Name : {value.firstname} {value.lastname}</h6>
+                          <h6 class="card-text">Name : {value.firstname} {value.lastname}</h6>
                           <h6 class="card-text">College : {value.college}</h6>
                           <h6 class="card-title">Course : {value.course}</h6>
                           <h6 class="card-text">Email : {value.email}</h6>
