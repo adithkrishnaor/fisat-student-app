@@ -5,7 +5,7 @@ import axios from "axios";
 const ViewAll = () => {
   const [data, setData] = useState([]);
   const fetchData = () => {
-    axios.get("https://anishpdm.github.io/dummy-api-new/student.json")
+    axios.get("https://courseapplogix.onrender.com/getdata")
     .then(
       (response) => {
         console.log(response.data)
@@ -13,6 +13,7 @@ const ViewAll = () => {
       }
     ).catch(
       (error) => {
+        console.log(error.message)
         alert(error.message)
       }
     ).finally()
